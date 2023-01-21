@@ -51,7 +51,12 @@
                                 <InputNumber class="form-control" @bind-Value="@item.Height" />
                                 <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.Height)" />
                             </div>
-
+                            @*rotateTransform*@
+                            <div class="form-label-group">
+                                <label>Rotate</label>
+                                <InputNumber class="form-control" @bind-Value="@item.RotateTransForm" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.RotateTransForm)" />
+                            </div>
                             @*fontSize*@
                             <div class="form-label-group">
                                 <label>FontSize</label>
@@ -101,6 +106,7 @@
                                     }
                                 </select>
                             </div>
+
                         </div>
                     }
                 }
@@ -124,6 +130,26 @@
                                     <label>Y-axis</label>
                                     <InputNumber class="form-control" @bind-Value="@img.PosY" />
                                     <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.PosY)" />
+                                </div>
+
+                                @*height*@
+                                <div>
+                                    <label>Height</label>
+                                    <InputNumber class="form-control" @bind-Value="@img.Height" />
+                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.Height)" />
+                                </div>
+
+                                @*posy*@
+                                <div class="form-label-group">
+                                    <label>Width</label>
+                                    <InputNumber class="form-control" @bind-Value="@img.Width" />
+                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.Width)" />
+                                </div>
+                                @*rotateTransform*@
+                                <div class="form-label-group">
+                                    <label>Rotate</label>
+                                    <InputNumber class="form-control" @bind-Value="@img.RotateTransForm" />
+                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.RotateTransForm)" />
                                 </div>
                             </div>
                         }

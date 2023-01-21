@@ -14,7 +14,6 @@ namespace WebScrapperPdf.Components
         public IDataService DataService { get; set; }
         [Parameter]
         public Dictionary<string, string>? Items { get; set; } = new Dictionary<string, string>();
-
         [Parameter]
         public string TheKey { get; set; }
         [Parameter]
@@ -50,37 +49,29 @@ namespace WebScrapperPdf.Components
             {
                 Pdf.File.Content.Add(new PdfContent<string, string> { Key = item.Key, Value = item.Value });
             }
-          
             Pdf.File.TheFileBase64 = await DataService.DownloadPdfFileAsync(Pdf.File).GetBase64String();
         }
-     
         public async Task RemoveAsync(KeyValuePair<string, string> item)
         {
             pdf = new PdfContent<string, string> { Key = item.Key, Value = item.Value };
             if (item.Key.StartsWith("img"))
             {
-                RemovePdfContents(Pdf.File.Images);
+                RemovePdfContents(Pdf.File.Images, item.Key);
                 //Pdf.File.Images.Remove(Pdf.File.Images.FirstOrDefault(k => k.Key == pdf.Key));
             }
             else if (item.Key.StartsWith("a"))
             {
-                RemovePdfContents(Pdf.File.Hrefs);
+                RemovePdfContents(Pdf.File.Hrefs, item.Key);
             }
             else
             {
-                RemovePdfContents(Pdf.File.Content);
+                RemovePdfContents(Pdf.File.Content, item.Key);
             }
             Pdf.File.TheFileBase64 = await DataService.DownloadPdfFileAsync(Pdf.File).GetBase64String();
         }
-        private void RemovePdfContents(List<PdfContent<string,string>> PdfConent)
+        private void RemovePdfContents(List<PdfContent<string, string>> PdfConent, string pdfKey)
         {
-            for (int i = 0; i < PdfConent.Count; i++)
-            {
-                if (PdfConent[i].Key == pdf.Key)
-                {
-                    PdfConent.RemoveAt(i);
-                }
-            }
+            PdfConent.RemoveAll(pc => pc.Key == pdfKey);
         }
     }
 }
