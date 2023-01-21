@@ -9,6 +9,7 @@ namespace WebScrapperPdf.Components
 {
     public partial class TableComponent : ComponentBase
     {
+        private PdfContent<string, string> pdf = new PdfContent<string, string>();
         [Inject]
         public IDataService DataService { get; set; }
         [Parameter]
@@ -55,41 +56,31 @@ namespace WebScrapperPdf.Components
      
         public async Task RemoveAsync(KeyValuePair<string, string> item)
         {
-            PdfContent<string, string> pdf = new PdfContent<string, string> { Key = item.Key, Value = item.Value };
+            pdf = new PdfContent<string, string> { Key = item.Key, Value = item.Value };
             if (item.Key.StartsWith("img"))
             {
+                RemovePdfContents(Pdf.File.Images);
                 //Pdf.File.Images.Remove(Pdf.File.Images.FirstOrDefault(k => k.Key == pdf.Key));
-                for (int i = 0; i < Pdf.File.Images.Count; i++)
-                {
-                    if (Pdf.File.Images[i].Key == pdf.Key)
-                    {
-                        Pdf.File.Images.RemoveAt(i);
-                    }
-                }
             }
             else if (item.Key.StartsWith("a"))
             {
-                //Pdf.File.Hrefs.Remove(Pdf.File.Images.FirstOrDefault(k => k.Key == pdf.Key));
-                for (int i = 0; i < Pdf.File.Hrefs.Count; i++)
-                {
-                    if (Pdf.File.Hrefs[i].Key == pdf.Key)
-                    {
-                        Pdf.File.Hrefs.RemoveAt(i);
-                    }
-                }
+                RemovePdfContents(Pdf.File.Hrefs);
             }
             else
             {
-                for (int i = 0; i < Pdf.File.Content.Count; i++)
+                RemovePdfContents(Pdf.File.Content);
+            }
+            Pdf.File.TheFileBase64 = await DataService.DownloadPdfFileAsync(Pdf.File).GetBase64String();
+        }
+        private void RemovePdfContents(List<PdfContent<string,string>> PdfConent)
+        {
+            for (int i = 0; i < PdfConent.Count; i++)
+            {
+                if (PdfConent[i].Key == pdf.Key)
                 {
-                    if (Pdf.File.Content[i].Key == pdf.Key)
-                    {
-                        Pdf.File.Content.RemoveAt(i);
-                    }
+                    PdfConent.RemoveAt(i);
                 }
             }
-      
-            Pdf.File.TheFileBase64 = await DataService.DownloadPdfFileAsync(Pdf.File).GetBase64String();
         }
     }
 }

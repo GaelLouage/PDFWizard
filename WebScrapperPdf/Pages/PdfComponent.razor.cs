@@ -33,6 +33,14 @@ namespace WebScrapperPdf.Pages
             "Green",
             "Blue"
          };
+        public List<string> StringFormats = new List<string>()
+        {
+            "TopLeft",
+            "TopRight",
+            "TopCenter",
+            "BottomLeft",
+            "BottomRight"
+        };
         public async Task UpdateFile()
         {
             Pdf.File.TheFileBase64 = await DataService.DownloadPdfFileAsync(Pdf.File).GetBase64String();

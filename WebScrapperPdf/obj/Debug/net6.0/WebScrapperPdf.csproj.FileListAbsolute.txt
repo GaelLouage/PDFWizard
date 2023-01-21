@@ -852,3 +852,4 @@ C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\obj\Debug\net6.0\buil
 C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\obj\Debug\net6.0\build-gz\FUgz+3FX.gz
 C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\obj\Debug\net6.0\build-gz\5ypnv7x8.gz
 C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\obj\Debug\net6.0\build-gz\uDHBIx5g.gz
+C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\bin\Debug\net6.0\Components\sample-data\weather.json

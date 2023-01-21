@@ -13,6 +13,7 @@ namespace Infrastructuur.Models
         public string RectangleColor { get; set; } = "White";
         //public string StringFormat { get; set; }
         public string FontFamily { get; set; } = "Verdana";
+        public string XStringFormats { get; set; }
         public double FontSize { get; set; } = 0.7;
         public string BrushTextColor { get; set; } = "Black";
         public XFontStyle FontStyle { get; set; } = XFontStyle.Regular;

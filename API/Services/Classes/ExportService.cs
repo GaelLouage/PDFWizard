@@ -1,4 +1,5 @@
 ﻿using API.Services.Interfaces;
+using Infrastructuur.Extensions;
 using Infrastructuur.Models;
 using Microsoft.AspNetCore.Mvc;
 using PdfSharpCore.Drawing;
@@ -59,8 +60,8 @@ namespace API.Services.Classes
                 {
                     var fontText = new XFont(node.FontFamily, node.FontSize * 16, node.FontStyle);
                     XRect rect = new XRect(node.PosX, node.PosY, node.Width, node.Height);
-                    gfx.DrawRectangle(SetColor(node.RectangleColor), rect);
-                    tf.DrawString(node.Value.ToString(), fontText, SetColor(node.BrushTextColor), rect, XStringFormats.TopLeft);
+                    gfx.DrawRectangle(node.RectangleColor.SetColor(), rect);
+                    tf.DrawString(node.Value.ToString(), fontText, node.BrushTextColor.SetColor(), rect, XStringFormats.TopLeft);
                 }
             }
         }
@@ -85,16 +86,6 @@ namespace API.Services.Classes
                 }
             }
         }
-        private XSolidBrush SetColor(string textcolor)
-        {
-            return textcolor switch
-            {
-                "Red" => XBrushes.Red,
-                "Black" => XBrushes.Black,
-                "Green" => XBrushes.Green,
-                "Blue" => XBrushes.Blue,
-                "White" => XBrushes.White
-            };
-        }
+  
     }
 }
