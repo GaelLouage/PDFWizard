@@ -1,0 +1,154 @@
+﻿@page "/pdf"
+@using Infrastructuur.Pdfs;
+@using PdfSharpCore.Drawing;
+@using WebScrapperPdf.Services.Interfaces;
+@inject IJSRuntime JS
+<h3>Pdf File</h3>
+@*<button @onclick="@DownloadPdfFile">Download the pdf</button>*@
+<div class="page">
+    <div>
+        <!--contents and data of pdf file-->
+        <EditForm class="form" Model="Pdf.File" OnValidSubmit="HandleValidSubmit">
+            <div>
+                @foreach (var content in Pdf.File.Content)
+                {
+                    <p class="btn btn-primary" @onclick="() => DisplayForm(content.Key,nameof(Pdf.File.Content).ToString())">@content.Key</p>
+                }
+                @foreach (var img in Pdf.File.Images)
+                {
+                    <p class="btn btn-primary" @onclick="() => DisplayForm(img.Key, nameof(Pdf.File.Images).ToString())">@img.Key</p>
+                }
+                @foreach (var item in Pdf.File.Content)
+                {
+                    @if (item.IsClicked)
+                    {
+                        <div>
+                            <p>@item.Key</p>
+                            @*posx*@
+                            <div class="form-label-group">
+                                <label>X-axis</label>
+                                <InputNumber class="form-control" @bind-Value="@item.PosX" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.PosX)" />
+                            </div>
+
+                            @*posy*@
+                            <div class="form-label-group">
+                                <label>Y-axis</label>
+                                <InputNumber class="form-control" @bind-Value="@item.PosY" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.PosY)" />
+                            </div>
+
+                            @*width*@
+                            <div class="form-label-group">
+                                <label>Width</label>
+                                <InputNumber class="form-control" @bind-Value="@item.Width" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.Width)" />
+                            </div>
+
+                            @*height*@
+                            <div class="form-label-group">
+                                <label>Height</label>
+                                <InputNumber class="form-control" @bind-Value="@item.Height" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.Height)" />
+                            </div>
+
+                            @*fontSize*@
+                            <div class="form-label-group">
+                                <label>FontSize</label>
+                                <InputNumber class="form-control" step="0.1" @bind-Value="@item.FontSize" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.FontSize)" />
+                            </div>
+
+                            @*fontstyle*@
+                            <div class="form-label-group">
+                                <label>FontStyle</label>
+                                <select @bind="@item.FontStyle">
+                                    @foreach (var fontStyle in FontStyles)
+                                    {
+                                        <option value="@fontStyle">@fontStyle</option>
+                                    }
+                                </select>
+                            </div>
+
+                            @*fontFamilies*@
+                            <div class="form-label-group">
+                                <label>FontFamilies</label>
+                                <select @bind="@item.FontFamily">
+                                    @foreach (var fontFamily in FontFamilies)
+                                    {
+                                        <option value="@fontFamily">@fontFamily</option>
+                                    }
+                                </select>
+                            </div>
+                            @**XBrushesText*@
+                            <div class="form-label-group">
+                                <label>Rectangle Color</label>
+                                <select @bind="@item.RectangleColor">
+                                    @foreach (var brush in Brushes)
+                                    {
+                                        <option value="@brush">@brush</option>
+                                    }
+                                </select>
+                            </div>
+
+                            @**XBrushesText*@
+                            <div class="form-label-group">
+                                <label>Text Color</label>
+                                <select @bind="@item.BrushTextColor">
+                                    @foreach (var brush in Brushes)
+                                    {
+                                        <option value="@brush">@brush</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    }
+                }
+                @if (Pdf.File.Images is not null)
+                {
+                    @foreach (var img in Pdf.File.Images)
+                    {
+                        @if (img.IsClicked)
+                        {
+                            <div>
+                                @*posx*@
+                                <p>@img.Key</p>
+                                <div>
+                                    <label>X-axis</label>
+                                    <InputNumber class="form-control" @bind-Value="@img.PosX" />
+                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.PosX)" />
+                                </div>
+
+                                @*posy*@
+                                <div class="form-label-group">
+                                    <label>Y-axis</label>
+                                    <InputNumber class="form-control" @bind-Value="@img.PosY" />
+                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.PosY)" />
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+            <button class="btn w-100 mt-2 mb-2 btn-primary" type="submit">Submit Changes</button>
+        </EditForm>
+
+    </div>
+    <!--the file-->
+    <div>
+        <div>
+            @if (!string.IsNullOrEmpty(Pdf.File.TheFileBase64))
+            {
+                <object>
+                    <embed id="pdfID" type="text/pdf" src="data:application/pdf;base64,@Pdf.File.TheFileBase64" />
+                </object>
+            }
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+
+}
