@@ -15,6 +15,11 @@ namespace WebScrapperPdf.Pages
         public WebsiteEntity Website { get; set; } = new WebsiteEntity();
         private string title = "Page";
         public List<string> ButtonList { get; set; } = new List<string>();
+        public List<LanguageEntity<string, string>> Languages { get; set; } = new List<LanguageEntity<string, string>>();
+        protected override async Task OnInitializedAsync()
+        {
+            Languages = (await DataService.GetLanguages()).ToList();
+        }
         private async Task HandleSubmit()
         {
             ClearPdfContent();
@@ -22,7 +27,7 @@ namespace WebScrapperPdf.Pages
             if (!string.IsNullOrEmpty(Website.Url))
             {
                 title = Website.Url;
-                Result = (await DataService.GetDataByTitleAsync(Website.Url));
+                Result = (await DataService.GetDataByTitleAsync(Website.Url, Website.Language));
 
                 Result.Data = Result.Data
                  .OrderBy(x => x.Key)

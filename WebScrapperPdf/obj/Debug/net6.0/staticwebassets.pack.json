@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
+      "Id": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\wwwroot\\data\\Languages.json",
+      "PackagePath": "staticwebassets\\data\\Languages.json"
+    },
+    {
       "Id": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

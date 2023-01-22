@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aBqcnjCTnja31y9fERf8DzJn+oeC2jLaxtjPpauHGdU=",
+  "Hash": "5WJgusvAgxNPDt9j3r4KreFa6OjRcgi+Jp4B4J3tvzE=",
   "Source": "WebScrapperPdf",
   "BasePath": "/",
   "Mode": "Root",
@@ -7308,6 +7308,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
+    },
+    {
+      "Identity": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\wwwroot\\data\\Languages.json",
+      "SourceId": "WebScrapperPdf",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "data/Languages.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\data\\Languages.json"
     },
     {
       "Identity": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\wwwroot\\favicon.ico",

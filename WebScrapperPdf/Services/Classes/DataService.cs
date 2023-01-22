@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using WebScrapperPdf.Services.Interfaces;
 using System.IO;
-
+using System.Net.Http.Json;
 
 namespace WebScrapperPdf.Services.Classes
 {
@@ -20,10 +20,10 @@ namespace WebScrapperPdf.Services.Classes
             _httpClient = httpClient;
         }
 
-        public async Task<ResultDto> GetDataByTitleAsync(string title)
+        public async Task<ResultDto> GetDataByTitleAsync(string title, string language)
         {
             return await JsonSerializer.DeserializeAsync<ResultDto>
-             (await _httpClient.GetStreamAsync($"https://localhost:7152/api/WebScrapper/GetAllDataFromName/{title}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+             (await _httpClient.GetStreamAsync($"https://localhost:7152/api/WebScrapper/GetAllDataFromName/{title}/{language}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<byte[]> DownloadPdfFileAsync(PdfEntity pdfFile)
@@ -35,8 +35,11 @@ namespace WebScrapperPdf.Services.Classes
             var response = await _httpClient.PostAsync($"https://localhost:7152/api/Pdf/", pdfData);
 
             return await response.Content.ReadAsByteArrayAsync();
+        }
 
-
+        public async Task<List<LanguageEntity<string, string>>> GetLanguages()
+        {
+            return (await _httpClient.GetFromJsonAsync<List<LanguageEntity<string, string>>>("data/Languages.json")).ToList();
         }
     }
 }

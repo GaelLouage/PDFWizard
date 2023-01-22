@@ -6,7 +6,7 @@
 <h3>Pdf File</h3>
 @*<button @onclick="@DownloadPdfFile">Download the pdf</button>*@
 <div class="page">
-    <div>
+    <div >
         <!--contents and data of pdf file-->
         <EditForm class="form" Model="Pdf.File" OnValidSubmit="HandleValidSubmit">
             <div>
@@ -22,52 +22,84 @@
                 {
                     @if (item.IsClicked)
                     {
-                        <div>
+                        <div class="border border-dark rounded">
                             <p>@item.Key</p>
                             @*posx*@
-                            <div class="form-label-group">
+                            <p class="text-white bg-black text-center p-2">Axis</p>
+                            <div class="form-label-group mb-2">
                                 <label>X-axis</label>
-                                <InputNumber class="form-control" @bind-Value="@item.PosX" />
+                                <InputNumber @bind-Value="@item.PosX" class="w-50 h-25 float-end" />
                                 <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.PosX)" />
                             </div>
 
                             @*posy*@
-                            <div class="form-label-group">
+                            <div class="form-label-group mb-2">
                                 <label>Y-axis</label>
-                                <InputNumber class="form-control" @bind-Value="@item.PosY" />
+                                <InputNumber @bind-Value="@item.PosY" class="w-50 h-25 float-end" />
                                 <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.PosY)" />
                             </div>
 
+                            <p class="text-white bg-black text-center p-2">Size</p>
                             @*width*@
-                            <div class="form-label-group">
+                            <div class="form-label-group mb-2">
                                 <label>Width</label>
-                                <InputNumber class="form-control" @bind-Value="@item.Width" />
+                                <InputNumber @bind-Value="@item.Width" class="w-50 h-25 float-end" />
                                 <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.Width)" />
                             </div>
 
                             @*height*@
-                            <div class="form-label-group">
+                            <div class="form-label-group mb-2">
                                 <label>Height</label>
-                                <InputNumber class="form-control" @bind-Value="@item.Height" />
+                                <InputNumber @bind-Value="@item.Height" class="w-50 h-25 float-end" />
                                 <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.Height)" />
                             </div>
+                            <p class="text-white bg-black text-center p-2">Transform</p>
                             @*rotateTransform*@
-                            <div class="form-label-group">
+                            <div class="form-label-group mb-2">
                                 <label>Rotate</label>
-                                <InputNumber class="form-control" @bind-Value="@item.RotateTransForm" />
+                                <InputNumber @bind-Value="@item.RotateTransForm" class="w-50 h-25 float-end" />
                                 <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.RotateTransForm)" />
                             </div>
-                            @*fontSize*@
-                            <div class="form-label-group">
-                                <label>FontSize</label>
-                                <InputNumber class="form-control" step="0.1" @bind-Value="@item.FontSize" />
-                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.FontSize)" />
+                           
+                            @*shear content*@
+                            @*shearx*@
+                            <div>
+                                <label>shearX</label>
+                                <InputNumber @bind-Value="@item.ShearX" class="w-50 h-25 float-end" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.ShearY)" />
                             </div>
 
+                            @*shearY*@
+                            <div class="form-label-group mb-2">
+                                <label>shearY</label>
+                                <InputNumber @bind-Value="@item.ShearY" class="w-50 h-25 float-end" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.ShearY)" />
+                            </div>
+
+                            @*centerX*@
+                             <div class="form-label-group mb-2">
+                                <label>centerX</label>
+                                <InputNumber @bind-Value="@item.CenterX" class="w-50 h-25 float-end" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.CenterY)" />
+                            </div>
+
+                            @*centerY*@
+                            <div class="form-label-group mb-2">
+                                <label>centerY</label>
+                                <InputNumber @bind-Value="@item.CenterY" class="w-50 h-25 float-end" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.CenterY)" />
+                            </div>
+                            <p class="text-white bg-black text-center p-2">Font</p>
+                            @*fontSize*@
+                            <div class="form-label-group mb-2">
+                                <label>FontSize</label>
+                                <InputNumber step="0.1" @bind-Value="@item.FontSize" class="w-50 h-25 float-end" />
+                                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => item.FontSize)" />
+                            </div>
                             @*fontstyle*@
-                            <div class="form-label-group">
+                            <div class="form-label-group mb-2">
                                 <label>FontStyle</label>
-                                <select @bind="@item.FontStyle">
+                                <select @bind="@item.FontStyle" class="w-50 h-25 float-end">
                                     @foreach (var fontStyle in FontStyles)
                                     {
                                         <option value="@fontStyle">@fontStyle</option>
@@ -76,9 +108,9 @@
                             </div>
 
                             @*fontFamilies*@
-                            <div class="form-label-group">
+                            <div class="form-label-group mb-2">
                                 <label>FontFamilies</label>
-                                <select @bind="@item.FontFamily">
+                                <select @bind="@item.FontFamily" class="w-50 h-25 float-end">
                                     @foreach (var fontFamily in FontFamilies)
                                     {
                                         <option value="@fontFamily">@fontFamily</option>
@@ -86,27 +118,26 @@
                                 </select>
                             </div>
                             @**XBrushesText*@
-                            <div class="form-label-group">
-                                <label>Rectangle Color</label>
-                                <select @bind="@item.RectangleColor">
-                                    @foreach (var brush in Brushes)
-                                    {
-                                        <option value="@brush">@brush</option>
-                                    }
-                                </select>
-                            </div>
-
-                            @**XBrushesText*@
-                            <div class="form-label-group">
+                            <div class="form-label-group mb-2">
                                 <label>Text Color</label>
-                                <select @bind="@item.BrushTextColor">
+                                <select @bind="@item.BrushTextColor" class="w-50 h-25 float-end">
                                     @foreach (var brush in Brushes)
                                     {
                                         <option value="@brush">@brush</option>
                                     }
                                 </select>
                             </div>
-
+                            <p class="text-white bg-black text-center p-2">Background</p>
+                            @**XBrushesText*@
+                            <div class="form-label-group mb-2">
+                                <label>Rectangle Color</label>
+                                <select @bind="@item.RectangleColor" class="w-50 h-25 float-end">
+                                    @foreach (var brush in Brushes)
+                                    {
+                                        <option value="@brush">@brush</option>
+                                    }
+                                </select>
+                            </div>
                         </div>
                     }
                 }
@@ -116,40 +147,73 @@
                     {
                         @if (img.IsClicked)
                         {
-                            <div>
+                            <div class="border border-dark rounded">
                                 @*posx*@
                                 <p>@img.Key</p>
-                                <div>
-                                    <label>X-axis</label>
-                                    <InputNumber class="form-control" @bind-Value="@img.PosX" />
-                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.PosX)" />
+
+                                <p class="text-white bg-black text-center p-2">Axis</p>
+
+                                <div class="form-label-group mb-2">
+                                        <label>X-axis</label>
+                                        <InputNumber @bind-Value="@img.PosX" class="w-50 h-25 float-end" />
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.PosX)" />
+                                    </div>
+
+                                    @*posy*@
+                                <div class="form-label-group mb-2">
+                                        <label>Y-axis</label>
+                                        <InputNumber @bind-Value="@img.PosY" class="w-50 h-25 float-end" />
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.PosY)" />
+                                    </div>
+                                <p class="text-white bg-black text-center p-2">Size</p>
+                                    @*height*@
+                                <div class="form-label-group mb-2">
+                                        <label>Height</label>
+                                        <InputNumber @bind-Value="@img.Height" class="w-50 h-25 float-end" />
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.Height)" />
+                                    </div>
+
+                                    @*posy*@
+                                     <div class="form-label-group mb-2">
+                                        <label>Width</label>
+                                        <InputNumber @bind-Value="@img.Width" class="w-50 h-25 float-end" />
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.Width)" />
+                                    </div>
+                                <p class="text-white bg-black text-center p-2">Transform</p>
+                                    @*rotateTransform*@
+                                <div class="form-label-group mb-2">
+                                        <label>Rotate</label>
+                                        <InputNumber @bind-Value="@img.RotateTransForm" class="w-50 h-25 float-end" />
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.RotateTransForm)" />
+                                    </div>
+                             
+                                @*shear image*@
+                                @*shearx*@
+                                <div class="form-label-group mb-2">
+                                    <label>shearX</label>
+                                    <InputNumber @bind-Value="@img.ShearX" class="w-50 h-25 float-end" />
+                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.ShearY)" />
                                 </div>
 
-                                @*posy*@
-                                <div class="form-label-group">
-                                    <label>Y-axis</label>
-                                    <InputNumber class="form-control" @bind-Value="@img.PosY" />
-                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.PosY)" />
+                                @*shearY*@
+                                <div class="form-label-group mb-2">
+                                    <label>shearY</label>
+                                    <InputNumber @bind-Value="@img.ShearY" class="w-50 h-25 float-end" />
+                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.ShearY)" />
                                 </div>
 
-                                @*height*@
-                                <div>
-                                    <label>Height</label>
-                                    <InputNumber class="form-control" @bind-Value="@img.Height" />
-                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.Height)" />
+                                @*centerX*@
+                                <div class="form-label-group mb-2">
+                                    <label>centerX</label>
+                                    <InputNumber @bind-Value="@img.CenterX" class="w-50 h-25 float-end" />
+                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.CenterY)" />
                                 </div>
 
-                                @*posy*@
-                                <div class="form-label-group">
-                                    <label>Width</label>
-                                    <InputNumber class="form-control" @bind-Value="@img.Width" />
-                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.Width)" />
-                                </div>
-                                @*rotateTransform*@
-                                <div class="form-label-group">
-                                    <label>Rotate</label>
-                                    <InputNumber class="form-control" @bind-Value="@img.RotateTransForm" />
-                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.RotateTransForm)" />
+                                @*centerY*@
+                                  <div class="form-label-group mb-2">
+                                    <label>centerY</label>
+                                    <InputNumber @bind-Value="@img.CenterY" class="w-50 h-25 float-end" />
+                                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => img.CenterY)" />
                                 </div>
                             </div>
                         }

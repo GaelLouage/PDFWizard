@@ -6,8 +6,10 @@ using PdfSharpCore.Drawing;
 using PdfSharpCore.Drawing.Layout;
 using PdfSharpCore.Pdf;
 using PdfSharpCore.Pdf.Annotations;
+using SixLabors.ImageSharp;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Net;
 using System.Text;
 using System.Xml.Linq;
@@ -61,6 +63,8 @@ namespace API.Services.Classes
                     var fontText = new XFont(node.FontFamily, node.FontSize * 16, node.FontStyle);
                     XRect rect = new XRect(node.PosX, node.PosY, node.Width, node.Height);
                     gfx.DrawRectangle(node.RectangleColor.SetColor(), rect);
+                    gfx.RotateTransform(node.RotateTransForm);
+                    gfx.SkewAtTransform(node.ShearX, node.ShearY, node.CenterX, node.CenterY);
                     tf.DrawString(node.Value.ToString(), fontText, node.BrushTextColor.SetColor(), rect, XStringFormats.TopLeft);
                 }
             }
@@ -69,6 +73,7 @@ namespace API.Services.Classes
         {
             if (pdfEntity.Images != null)
             {
+
                 foreach (var image in pdfEntity.Images)
                 {
                     var imgS = image.Value.Replace("src://", "https://");
@@ -77,10 +82,18 @@ namespace API.Services.Classes
                         using (var response = await client.GetAsync(imgS))
                         {
                             byte[] imageBytes =
+                                /*The ConfigureAwait(false) method is used to tell the compiler not to resume execution on the captured context when the awaited task completes.
+                                When an async method is called, the current context (e.g. the current thread or synchronization context) is captured, and the method continues execution on a different context, 
+                                such as a thread pool thread. When the awaited task completes and the method resumes execution, it resumes on the captured context, if that context is still available.*/
                                 await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
                             var memoStream = new MemoryStream(imageBytes);
+                            //draw rounded image 
+                         
                             XImage img = XImage.FromStream(() => memoStream);
-                            gfx.DrawImage(img, image.PosX, image.PosY);
+                            var rect = new XRect(image.PosX, image.PosY, image.Width, image.Height);
+                            gfx.RotateTransform(image.RotateTransForm);
+                            gfx.SkewAtTransform(image.ShearX, image.ShearY,image.CenterX,image.CenterY);
+                            gfx.DrawImage(img, image.PosX, image.PosY,image.Width,image.Height);
                         }
                     }
                 }

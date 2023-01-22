@@ -17,12 +17,13 @@ namespace API.Controllers
         }
 
 
-        [HttpGet("GetAllDataFromName/{title}")]
-        public async Task<IActionResult> GetAllDataFromUrl(string title)
+        [HttpGet("GetAllDataFromName/{title}/{language}")]
+        public async Task<IActionResult> GetAllDataFromUrl(string title, string language)
         {
             
             var web = new WebsiteEntity();
-            web.Url = $"https://nl.wikipedia.org/wiki/" + string.Join("_" ,title);
+            web.Language = language ?? "en";
+            web.Url = $"https://{language}.wikipedia.org/wiki/" + string.Join("_" ,title);
             return Ok(await _webScrapperService.GetDataFromScrappingAsync(web));
         }
     }

@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Infrastructuur\Infrastructuur.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>

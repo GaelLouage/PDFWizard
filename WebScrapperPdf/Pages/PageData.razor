@@ -1,6 +1,7 @@
 ﻿@page "/pagedata"
 @using Infrastructuur.Dtos;
 @using Infrastructuur.Models;
+@using Infrastructuur.Pdfs;
 @using WebScrapperPdf.Components
 @using WebScrapperPdf.Services.Interfaces;
 
@@ -8,7 +9,12 @@
 
 <EditForm Model="@Website" OnSubmit="@HandleSubmit">
     <InputText id="Title" @bind-Value="Website.Url" />
-
+    <select @bind="Website.Language">
+    @foreach (var language in Languages)
+    {
+        <option value="@language.Key" >@language.Value</option>
+    }
+    </select>
     <button type="submit">Submit</button>
 </EditForm>
 

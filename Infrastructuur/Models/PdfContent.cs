@@ -2,7 +2,7 @@
 
 namespace Infrastructuur.Models
 {
-    public class PdfContent<Tkey, Tvalue> 
+    public class PdfContent<Tkey, Tvalue>  : SkewContent
     {
         public Tkey Key { get; set; }
         public Tvalue Value { get; set; }
@@ -15,8 +15,16 @@ namespace Infrastructuur.Models
         public string FontFamily { get; set; } = "Verdana";
         public string XStringFormats { get; set; }
         public double FontSize { get; set; } = 0.7;
+        public double RotateTransForm { get; set; } = 0;
         public string BrushTextColor { get; set; } = "Black";
         public XFontStyle FontStyle { get; set; } = XFontStyle.Regular;
         public bool IsClicked { get; set; } = false;
+    }
+    public class SkewContent
+    {
+        public double ShearX { get; set; } = 0;
+        public double ShearY { get; set; } = 0;
+        public double CenterX { get; set; } = 0;
+        public double CenterY { get; set; } = 0;
     }
 }

@@ -10,7 +10,7 @@ namespace Infrastructuur.Models
     {
         public string Url { get; set; }
         public string TagName { get; set; }
-        
+        public string Language { get; set; } = "en";
         
     }
 }
