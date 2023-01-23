@@ -79,5 +79,10 @@ namespace WebScrapperPdf.Pages
                     break;
             }
         }
+        public void SaveTheFile(string base64String)
+        {
+            DataService.AddPdfFile(new PdfFileEntity<Guid,string> { Key = Guid.NewGuid(), Value = base64String});
+        }
     }
 }
+

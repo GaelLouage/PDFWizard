@@ -1,0 +1,26 @@
+﻿
+.container-pdf-files {
+    display:grid;
+    gap:4em;
+    
+}
+embed {
+    width: 100% !important;
+    height: 15em !important;
+}
+@media only screen and (max-width:1400px) and (min-width: 800px){
+    .container-pdf-files {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media only screen and (min-width:1400px) {
+    .container-pdf-files {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    embed {
+        width: 100% !important;
+        height: 25em !important;
+    }
+}

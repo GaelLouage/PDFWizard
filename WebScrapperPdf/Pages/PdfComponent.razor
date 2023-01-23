@@ -233,6 +233,7 @@
                     <embed id="pdfID" type="text/pdf" src="data:application/pdf;base64,@Pdf.File.TheFileBase64" />
                 </object>
             }
+            <button @onclick="() => SaveTheFile(Pdf.File.TheFileBase64)">Save</button>
         </div>
     </div>
 </div>

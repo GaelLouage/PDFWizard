@@ -853,3 +853,8 @@ C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\obj\Debug\net6.0\buil
 C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\obj\Debug\net6.0\build-gz\5ypnv7x8.gz
 C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\obj\Debug\net6.0\build-gz\uDHBIx5g.gz
 C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\bin\Debug\net6.0\Components\sample-data\weather.json
+C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\bin\Debug\net6.0\wwwroot\_framework\Newtonsoft.Json.dll
+C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\bin\Debug\net6.0\wwwroot\_framework\Newtonsoft.Json.dll.gz
+C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\obj\Debug\net6.0\build-gz\R4YipJ1+.gz
+C:\Users\louagga\source\repos\WeScrapperPdf\WebScrapperPdf\obj\Debug\net6.0\scopedcss\Pages\PdfFilesComponent.razor.rz.scp.css

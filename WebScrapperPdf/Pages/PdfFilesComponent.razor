@@ -1,0 +1,17 @@
+﻿@page "/pdffiles"
+<h3>PdfFilesComponent</h3>
+<div class="container-pdf-files">
+@if (Files is not null && Files.Count > 0)
+{
+    @foreach (var file in Files)
+    {
+        <object>
+            <embed id="pdfID" type="text/pdf" src="data:application/pdf;base64,@file.Value" />
+        </object>
+    }
+}
+
+    </div>
+@code {
+
+}

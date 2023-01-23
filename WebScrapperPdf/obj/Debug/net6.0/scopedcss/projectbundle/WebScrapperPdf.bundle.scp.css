@@ -48,6 +48,33 @@ h3[b-vmfx5v6145] {
         height: 45em;
     }
 }
+/* /Pages/PdfFilesComponent.razor.rz.scp.css */
+
+.container-pdf-files[b-y27e6w4ots] {
+    display:grid;
+    gap:4em;
+    
+}
+embed[b-y27e6w4ots] {
+    width: 100% !important;
+    height: 15em !important;
+}
+@media only screen and (max-width:1400px) and (min-width: 800px){
+    .container-pdf-files[b-y27e6w4ots] {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media only screen and (min-width:1400px) {
+    .container-pdf-files[b-y27e6w4ots] {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    embed[b-y27e6w4ots] {
+        width: 100% !important;
+        height: 25em !important;
+    }
+}
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-zn6txvci6s] {
     position: relative;

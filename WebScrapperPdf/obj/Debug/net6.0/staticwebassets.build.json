@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5WJgusvAgxNPDt9j3r4KreFa6OjRcgi+Jp4B4J3tvzE=",
+  "Hash": "m/Q+Zo8UOCZBAUX1IpSnMQgmxpWmSOo5LbKsKNfrXp0=",
   "Source": "WebScrapperPdf",
   "BasePath": "/",
   "Mode": "Root",
@@ -746,6 +746,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\louagga\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\6.0.11\\runtimes\\browser-wasm\\lib\\net6.0\\netstandard.dll"
+    },
+    {
+      "Identity": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Newtonsoft.Json.dll",
+      "SourceId": "WebScrapperPdf",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Newtonsoft.Json.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\louagga\\.nuget\\packages\\newtonsoft.json\\13.0.2\\lib\\net6.0\\Newtonsoft.Json.dll"
     },
     {
       "Identity": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\bin\\Debug\\net6.0\\wwwroot\\_framework\\PdfSharpCore.dll",
@@ -6033,6 +6050,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.Extensions.Configuration.Abstractions.dll"
+    },
+    {
+      "Identity": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\obj\\Debug\\net6.0\\build-gz\\R4YipJ1+.gz",
+      "SourceId": "WebScrapperPdf",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Newtonsoft.Json.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Newtonsoft.Json.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Newtonsoft.Json.dll"
     },
     {
       "Identity": "C:\\Users\\louagga\\source\\repos\\WeScrapperPdf\\WebScrapperPdf\\obj\\Debug\\net6.0\\build-gz\\rglMLmc4.gz",

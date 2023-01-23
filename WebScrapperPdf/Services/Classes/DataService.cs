@@ -41,5 +41,25 @@ namespace WebScrapperPdf.Services.Classes
         {
             return (await _httpClient.GetFromJsonAsync<List<LanguageEntity<string, string>>>("data/Languages.json")).ToList();
         }
+
+        public async Task<List<PdfFileEntity<Guid, string>>> GetAllfiles()
+        {
+            return await JsonSerializer.DeserializeAsync<List<PdfFileEntity<Guid, string>>>
+             (await _httpClient.GetStreamAsync($"https://localhost:7152/api/PdfFiles/PdfFiles"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<bool> AddPdfFile(PdfFileEntity<Guid,string> pdfFile)
+        {
+            var pdfData =
+                new StringContent(JsonSerializer.Serialize(pdfFile), Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync($"https://localhost:7152/api/PdfFiles/AddPdfFile", pdfData);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
