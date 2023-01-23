@@ -5,9 +5,13 @@
 {
     @foreach (var file in Files)
     {
+        <div>
+
         <object>
             <embed id="pdfID" type="text/pdf" src="data:application/pdf;base64,@file.Value" />
         </object>
+        <p>Created: @file.CreatedDate</p>
+        </div>
     }
 }
 
