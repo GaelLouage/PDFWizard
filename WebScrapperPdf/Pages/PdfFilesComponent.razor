@@ -1,4 +1,8 @@
 ﻿@page "/pdffiles"
+@using Infrastructuur.Models;
+@using Infrastructuur.Pdfs;
+@using WebScrapperPdf.Services.Classes;
+@using WebScrapperPdf.Services.Interfaces;
 <h3>PdfFilesComponent</h3>
 <div class="container-pdf-files">
 @if (Files is not null && Files.Count > 0)
@@ -11,11 +15,25 @@
             <embed id="pdfID" type="text/pdf" src="data:application/pdf;base64,@file.Value" />
         </object>
         <p>Created: @file.CreatedDate</p>
+                <button @onclick="() => SavePdfAsTemplateAsync(file.Key)">Use Template</button>
         </div>
     }
 }
-
+<p>@s</p>
     </div>
 @code {
-
+    [Inject]
+    public IDataService data { get; set; }
+    string s = "";
+    public async Task SavePdfAsTemplateAsync(Guid fileKey)
+    {
+        var file = (await data.GetAllfiles()).FirstOrDefault(x => x.Key == fileKey);
+        if(file is not null)
+        {
+            Pdf.File.TheFileBase64 = file.Value;
+            Pdf.File.Images = file.Images;
+            Pdf.File.Content = file.Content;
+            Pdf.File.Hrefs = file.Hrefs;
+        }
+    }
 }
