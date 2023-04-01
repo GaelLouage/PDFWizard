@@ -14,7 +14,6 @@ namespace API.Services.Classes
         {
             _webScrapper = webScrapper;
         }
-
         public async Task<ResultDto> GetDataFromScrappingAsync(WebsiteEntity website)
         {
             var result = new ResultDto();
